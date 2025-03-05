@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -30,8 +31,13 @@ Route::post('/login',[AuthController::class, 'authenticate'])->name('authenticat
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('products', ProductController::class);
-    Route::get('products/create',[ProductController::class, 'create'])->name('products.create');
+    
+    Route::post ('logout',[AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
+    Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
 });
+
 
 
 

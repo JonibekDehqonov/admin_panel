@@ -8,16 +8,16 @@
             <ul class="navbar-nav ms-auto">
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('products.index') }}">Mahsulotlar</a>
+                        <a class="nav-link" href="{{ route('products.index') }}">Products</a>
                     </li>
                     <li class="nav-item">
-                        {{-- <a class="nav-link" href="{{ route('orders.create') }}">Buyurtma qilish</a> --}}
+                        <a class="nav-link" href="{{ route('orders.create') }}">Orders</a>
                     </li>
                     <li class="nav-item">
-                        {{-- <form action="{{ route('logout') }}" method="POST"> --}}
+                        <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-link nav-link">Chiqish</button>
-                        {{-- </form> --}}
+                            <button type="submit" class="btn btn-link nav-link">Logout</button>
+                        </form>
                     </li>
                 @else
                     <li class="nav-item">

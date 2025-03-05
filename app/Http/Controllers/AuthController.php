@@ -38,17 +38,20 @@ class AuthController extends Controller
     }
 
     public function register_store(Request $request ){
-        // dd($request);
         $validated= $request->validate([
             'name'=>'required',
             'email'=>'required',
             'password'=>'required|min:4',
-            
         ]);
+        
         $validated['password']=Hash::make($validated['password']);
     
         $user = User::create($validated);
         auth()->login($user);
-        return redirect('/')->with('success',"Accaunt successfully registered ");
+        return redirect('products')->with('success',"Accaunt successfully registered ");
+    }
+    public function logout(Request $request){
+        Auth::logout();
+        return redirect('/');
     }
 }
